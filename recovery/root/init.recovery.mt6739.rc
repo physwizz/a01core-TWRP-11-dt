@@ -1,0 +1,7 @@
+on init
+    exec u:r:recovery:s0 -- /sbin/mntl_link
+
+on post-fs-data
+# Support A/B feature for boot region
+    symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b

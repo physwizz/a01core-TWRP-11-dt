@@ -1,0 +1,30 @@
+# mount point   fstype              device                      device2                         flags
+# Dynamic Partitions
+/system         ext4                /dev/block/mapper/system                                    wait,logical,first_stage_mount,flags=backup=1;display="System";
+/vendor         ext4                /dev/block/mapper/vendor                                    wait,logical,first_stage_mount,flags=backup=1;display="Vendor";
+/odm            ext4                /dev/block/mapper/odm                                       wait,logical,first_stage_mount,flags=backup=1;display="Odm";
+/product        ext4                /dev/block/mapper/product                                   wait,logical,first_stage_mount,flags=backup=1;display="Product";
+
+/system_image   emmc                /dev/block/mapper/system                                    flags=backup=1;display="System Image";flashimg=1;wipeingui;
+/vendor_image   emmc                /dev/block/mapper/vendor                                    flags=backup=1;display="Vendor Image";flashimg=1;wipeingui;
+/odm_image      emmc                /dev/block/mapper/odm                                       flags=backup=1;display="Odm Image";flashimg=1;wipeingui;
+/product_image  emmc                /dev/block/mapper/product                                   flags=backup=1;display="Product Image";flashimg=1;wipeingui;
+
+# Physical partitions
+/optics_image   emmc                /dev/block/platform/bootdevice/by-name/optics               flags=backup=1;flashimg=1;display="Optics Image";
+/prism_image    emmc                /dev/block/platform/bootdevice/by-name/prism                flags=backup=1;flashimg=1;display="Prism Image";
+
+/metadata       ext4                /dev/block/platform/bootdevice/by-name/md_udc               flags=backup=1;display="Metadata";
+/boot           emmc                /dev/block/platform/bootdevice/by-name/boot                 flags=backup=1;flashimg=1;display="Boot";
+/recovery       emmc                /dev/block/platform/bootdevice/by-name/recovery             flags=backup=1;flashimg=1;display="Recovery";
+/data           f2fs                /dev/block/platform/bootdevice/by-name/userdata             flags=length=-16384;
+/cache          ext4                /dev/block/platform/bootdevice/by-name/cache                flags=backup=1;display="Cache";
+/dtbo           emmc                /dev/block/platform/bootdevice/by-name/dtbo                 flags=backup=1;flashimg=1;display="Dtbo";
+/param          emmc                /dev/block/platform/bootdevice/by-name/param                flags=backup=1;display="Param";
+/misc           emmc                /dev/block/platform/bootdevice/by-name/misc                 flags=backup=1;flashimg=1;display="Misc";
+/efs            ext4                /dev/block/platform/bootdevice/by-name/sec_efs              flags=backup=1;display="EFS";
+/md1img         emmc                /dev/block/platform/bootdevice/by-name/md1img   
+
+# Removable storage
+/external_sd    auto                /dev/block/mmcblk1p1        /dev/block/mmcblk1              flags=storage;wipeingui;removable;display="External SDcard";
+/usb-otg        auto                /dev/block/sdf1             /dev/block/sdf                  flags=display="USB-OTG";storage;wipeingui;removable;
